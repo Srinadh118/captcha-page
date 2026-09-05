@@ -30,7 +30,7 @@ export default function ChallengeView({ challenge, onSelect, onRefresh }) {
     setSelectedOption(option);
     playSound('click');
 
-    // Trigger exit animation matching user specification (card left, staggered options right)
+    // Trigger exit animation matching diagram (card left, staggered options right)
     setIsExiting(true);
 
     setTimeout(() => {
@@ -87,7 +87,9 @@ export default function ChallengeView({ challenge, onSelect, onRefresh }) {
               <span className={styles.tagDot} />
               VERIFICATION CHALLENGE
             </span>
-            <h2 className={styles.heading}>Earn Gems</h2>
+            <h2 className={styles.heading}>
+              Earn<span className={styles.headingHighlight}>Gems</span>
+            </h2>
             <p className={styles.description}>
               Complete a quick security check to earn rewards. Identify and select the code shown in the panel.
             </p>
@@ -117,7 +119,7 @@ export default function ChallengeView({ challenge, onSelect, onRefresh }) {
         </div>
       </div>
 
-      {/* BOTTOM INCENTIVE PILL */}
+      {/* BOTTOM INCENTIVE PILL (2 lines) */}
       <div className={`${styles.bottomPillWrapper} ${isExiting ? styles.bottomPillExiting : ''}`}>
         <div className={styles.rewardPill}>
           <img 
@@ -125,9 +127,10 @@ export default function ChallengeView({ challenge, onSelect, onRefresh }) {
             alt="Gold Gem" 
             className={styles.pillGem} 
           />
-          <span className={styles.pillText}>
-            Complete verification to earn <strong>+1 Gem</strong>
-          </span>
+          <div className={styles.pillTextGroup}>
+            <span className={styles.pillTextLine1}>Complete verification to earn</span>
+            <span className={styles.pillTextLine2}>+1 Gem</span>
+          </div>
         </div>
       </div>
     </div>

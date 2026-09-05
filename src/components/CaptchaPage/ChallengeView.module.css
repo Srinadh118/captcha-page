@@ -16,7 +16,7 @@
   justify-content: center;
   gap: 56px;
   width: 100%;
-  margin: 36px 0 48px;
+  margin: 36px 0 44px;
 }
 
 /* ---------------- CAPTCHA CARD ---------------- */
@@ -36,24 +36,18 @@
   width: 380px;
   height: 270px;
   border-radius: 20px;
-  /* Requirement 1: gradient top right to bottom left, #0C0013 5% and #632B76 100% */
+  /* Requirement: gradient top right to bottom left, #0C0013 5% and #632B76 100% */
   background: linear-gradient(to bottom left, #0C0013 5%, #632B76 100%);
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 
-              0 0 35px rgba(99, 43, 118, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(168, 85, 247, 0.2);
   user-select: none;
   overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.captchaCard:hover {
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 
-              0 0 45px rgba(168, 85, 247, 0.45);
 }
 
 /* Cyber corner bracket accents */
@@ -78,7 +72,6 @@
   border-right: 2px solid rgba(192, 132, 252, 0.65);
 }
 
-/* Subtle holographic line shimmer overlay */
 .shimmerOverlay {
   position: absolute;
   inset: 0;
@@ -86,7 +79,7 @@
     115deg,
     transparent 0%,
     rgba(255, 255, 255, 0.04) 40%,
-    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.1) 50%,
     transparent 60%
   );
   pointer-events: none;
@@ -100,8 +93,6 @@
   font-weight: 700;
   color: #ffffff;
   letter-spacing: 6px;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4),
-               0 0 40px rgba(168, 85, 247, 0.6);
   z-index: 2;
   position: relative;
 }
@@ -169,9 +160,9 @@
   height: 6px;
   border-radius: 50%;
   background-color: #a855f7;
-  box-shadow: 0 0 8px #a855f7;
 }
 
+/* Requirement 5: "Earn Gems" heading text with white and yellow colors */
 .heading {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 38px;
@@ -180,6 +171,11 @@
   letter-spacing: -0.5px;
   line-height: 1.15;
   margin-bottom: 12px;
+}
+
+.headingHighlight {
+  color: #FFC700;
+  margin-left: 8px;
 }
 
 .description {
@@ -231,10 +227,9 @@
 }
 
 /* 
-Requirement 2: 
-The option buttons has a gradient that goes from top right to bottom left,
-with #050207 stops at 5% and #261333 stops at 78%. 
-The option button has a border of #4D3467 of weight 2.
+Option buttons styling:
+Gradient top right to bottom left, #050207 5% and #261333 78%. 
+Border of #4D3467 of weight 2.
 */
 .optionBtn {
   width: 100%;
@@ -252,25 +247,24 @@ The option button has a border of #4D3467 of weight 2.
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
   position: relative;
   user-select: none;
 }
 
 /* 
-Requirement 3:
-The selected / hovered button state has a gradient the goes from top left to bottom right, 
-with #140021 stops at 5% and #56068B stops at 100%. 
-The selected/ hovered button state has a linear gradient border that goes from top to bottom, 
-with #9A59DA at 0% and #210141 stops at 100%.
+Requirement 3 & 4:
+Selected / hovered button state gradient from top left to bottom right (#140021 5% to #56068B 100%).
+Linear gradient border from top to bottom (#9A59DA 0% to #210141 100%).
+Only bottom shadow effect, NO glow effect.
 */
 .optionBtn:hover:not(:disabled) {
   background: 
     linear-gradient(to bottom right, #140021 5%, #56068B 100%) padding-box,
     linear-gradient(to bottom, #9A59DA 0%, #210141 100%) border-box;
   border: 2px solid transparent;
-  box-shadow: 0 0 20px rgba(154, 89, 218, 0.5), 0 4px 16px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.7);
   transform: translateY(-2px);
   color: #ffffff;
 }
@@ -280,7 +274,7 @@ with #9A59DA at 0% and #210141 stops at 100%.
     linear-gradient(to bottom right, #140021 5%, #56068B 100%) padding-box,
     linear-gradient(to bottom, #9A59DA 0%, #210141 100%) border-box;
   border: 2px solid transparent;
-  box-shadow: 0 0 28px rgba(154, 89, 218, 0.8), 0 4px 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.8);
   transform: scale(1.02);
   color: #ffffff;
 }
@@ -293,10 +287,10 @@ with #9A59DA at 0% and #210141 stops at 100%.
   cursor: default;
 }
 
-/* ---------------- BOTTOM REWARD PILL ---------------- */
+/* ---------------- BOTTOM REWARD PILL (2 LINES) ---------------- */
 .bottomPillWrapper {
   transition: opacity 0.3s ease, transform 0.3s ease;
-  margin-top: 16px;
+  margin-top: 20px;
 }
 
 .bottomPillExiting {
@@ -304,37 +298,50 @@ with #9A59DA at 0% and #210141 stops at 100%.
   transform: translateY(20px);
 }
 
+/* 
+Requirement 8: 
+"Complete verification to earn +1 Gem" should be in 2 lines as shown in the image attached.
+Border: thin gold border
+*/
 .rewardPill {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: rgba(18, 7, 28, 0.85);
-  border: 1px solid rgba(168, 85, 247, 0.28);
-  border-radius: 9999px;
-  padding: 12px 28px 12px 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(168, 85, 247, 0.12);
+  gap: 16px;
+  background: rgba(10, 4, 15, 0.85);
+  border: 1.5px solid rgba(217, 119, 6, 0.65);
+  border-radius: 18px;
+  padding: 12px 24px 12px 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(12px);
 }
 
 .pillGem {
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(234, 179, 8, 0.6));
 }
 
-.pillText {
-  font-size: 13.5px;
+.pillTextGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pillTextLine1 {
+  font-size: 14.5px;
   font-weight: 500;
-  color: #e2d9eb;
+  color: #ffffff;
+  letter-spacing: -0.2px;
 }
 
-.pillText strong {
-  font-weight: 700;
-  color: #facc15;
+.pillTextLine2 {
+  font-size: 16px;
+  font-weight: 800;
+  color: #FFC700;
+  letter-spacing: -0.2px;
 }
 
-/* ---------------- MOBILE STYLES (MATCHING PDF PAGES 12-13) ---------------- */
+/* ---------------- MOBILE STYLES ---------------- */
 @media (max-width: 860px) {
   .mainRow {
     flex-direction: column;
@@ -380,16 +387,6 @@ with #9A59DA at 0% and #210141 stops at 100%.
     min-width: unset;
     height: 52px;
     font-size: 16px;
-  }
-
-  .rewardPill {
-    padding: 10px 20px;
-    font-size: 12.5px;
-  }
-
-  .pillGem {
-    width: 20px;
-    height: 20px;
   }
 }
 
