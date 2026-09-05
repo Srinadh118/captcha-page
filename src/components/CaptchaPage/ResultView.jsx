@@ -1,32 +1,34 @@
-import React, { useEffect } from 'react';
-import styles from './ResultView.module.css';
-import RewardStatusIcon from './RewardStatusIcon';
-import { playSound } from './utils/audioEffects';
+import { useEffect } from "react";
+import styles from "./ResultView.module.css";
+import RewardStatusIcon from "./RewardStatusIcon";
+import { playSound } from "./utils/audioEffects";
 
 export default function ResultView({ success = true, onClaim, onNoThanks }) {
   useEffect(() => {
-    playSound(success ? 'success' : 'fail');
+    playSound(success ? "success" : "fail");
   }, [success]);
 
-  const rewardAmount = success ? '+1 Gem' : '+0.5 Gem';
-  const subtitle = success 
-    ? 'Full reward earned' 
-    : 'Keep going. Your reward is still yours.';
+  const prefix = success ? "+1" : "+0.5";
+  const subtitle = success
+    ? "Full reward earned"
+    : "Keep going. Your reward is still yours.";
 
   return (
     <div className={styles.container}>
       {/* Animated Gooey SVG Backdrop */}
       <div className={styles.gooyWrapper}>
-        <img 
-          src="/assets/gooy.svg" 
-          alt="Gooey Background" 
-          className={styles.gooySvg} 
+        <img
+          src="/assets/gooy.svg"
+          alt="Gooey Background"
+          className={styles.gooySvg}
         />
       </div>
 
       {/* Title */}
-      <h2 className={`${styles.title} ${success ? styles.successTitle : styles.failTitle}`}>
-        {success ? 'Verification complete!' : 'Verification unsuccessful!'}
+      <h2
+        className={`${styles.title} ${success ? styles.successTitle : styles.failTitle}`}
+      >
+        {success ? "Verification complete!" : "Verification unsuccessful!"}
       </h2>
 
       {/* Rotating Circles Icon */}
@@ -35,28 +37,25 @@ export default function ResultView({ success = true, onClaim, onNoThanks }) {
       {/* Reward Amount Display */}
       <div className={styles.rewardArea}>
         <div className={styles.gemAmountRow}>
-          <img 
-            src="/assets/gem-gold.png" 
-            alt="Gold Gem" 
-            className={styles.gemIcon} 
+          <img
+            src="/assets/gem-gold.png"
+            alt="Gold Gem"
+            className={styles.gemIcon}
           />
-          <span className={styles.gemAmount}>{rewardAmount}</span>
+          <span className={styles.gemAmount}>
+            <span className={styles.yellowPrefix}>{prefix}</span>{" "}
+            <span className={styles.gemWord}>Gem</span>
+          </span>
         </div>
         <p className={styles.rewardSubtitle}>{subtitle}</p>
       </div>
 
       {/* Action Buttons */}
       <div className={styles.actionsRow}>
-        <button 
-          className={styles.claimBtn}
-          onClick={onClaim}
-        >
+        <button className={styles.claimBtn} onClick={onClaim}>
           Claim
         </button>
-        <button 
-          className={styles.noThanksBtn}
-          onClick={onNoThanks}
-        >
+        <button className={styles.noThanksBtn} onClick={onNoThanks}>
           No Thanks
         </button>
       </div>

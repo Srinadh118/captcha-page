@@ -6,16 +6,14 @@
   flex-direction: column;
   background-color: #07040c;
   overflow: hidden;
+  font-family: "Poppins", sans-serif;
 }
 
-/* 
-Requirement 4: 
-The background is available in /public/assets/background.png
-*/
+/* Background image layer */
 .bgLayer {
   position: absolute;
   inset: 0;
-  background-image: url('/assets/background.png');
+  background-image: url("/assets/background.png");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -24,7 +22,34 @@ The background is available in /public/assets/background.png
   z-index: 1;
 }
 
-/* Subtle ambient cyber glow */
+/* 
+Requirement 7:
+The background has a subtle text overlay in the background that says captcha, 
+implement it with exact position and size as shown in the attached image, 
+Use font "Gasoek One" for the text.
+The text has a linear gradient as well, from 0% #050207 top-right to 100% #261333 bottom-left.
+*/
+.captchaWatermark {
+  position: absolute;
+  left: 15%;
+  top: 110%;
+  transform: rotate(-90deg);
+  transform-origin: top left;
+  font-family: "Gasoek One", sans-serif;
+  font-size: clamp(130px, 23vh, 200px);
+  line-height: 1;
+  white-space: nowrap;
+  letter-spacing: 4px;
+  background: linear-gradient(to bottom left, #0503076b 0%, #190e2149 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  user-select: none;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Ambient glow spot */
 .ambientGlow {
   position: absolute;
   top: 40%;
@@ -32,7 +57,11 @@ The background is available in /public/assets/background.png
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(121, 40, 202, 0.15) 0%, rgba(7, 4, 12, 0) 70%);
+  background: radial-gradient(
+    circle,
+    rgba(121, 40, 202, 0.14) 0%,
+    rgba(7, 4, 12, 0) 70%
+  );
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 2;
@@ -46,4 +75,12 @@ The background is available in /public/assets/background.png
   position: relative;
   z-index: 10;
   padding: 10px 16px 40px;
+}
+
+@media (max-width: 768px) {
+  .captchaWatermark {
+    left: 8px;
+    font-size: clamp(65px, 15vw, 100px);
+    opacity: 0.4;
+  }
 }

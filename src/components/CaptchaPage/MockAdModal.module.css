@@ -101,9 +101,9 @@
 }
 
 .adTitle {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 24px;
-  font-weight: 800;
+  font-weight: 700;
   color: #ffffff;
   margin-bottom: 8px;
 }
@@ -153,12 +153,15 @@ Collect reward button has same styles as option button (and only bottom shadow w
   background: linear-gradient(to bottom left, #050207 5%, #261333 78%);
   border: 2px solid #4D3467;
   color: #ffffff;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), 
+              background 0.28s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.28s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -168,16 +171,16 @@ Collect reward button has same styles as option button (and only bottom shadow w
 
 .claimRewardBtn:hover {
   background: 
-    linear-gradient(to bottom right, #140021 5%, #56068B 100%) padding-box,
+    linear-gradient(to bottom left, #140021 5%, #56068B 100%) padding-box,
     linear-gradient(to bottom, #9A59DA 0%, #210141 100%) border-box;
   border: 2px solid transparent;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.7);
-  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.6);
+  transform: translateY(-1px);
   color: #ffffff;
 }
 
 .claimRewardBtn:active {
-  transform: scale(0.98);
+  transform: translateY(0) scale(0.99);
 }
 
 @keyframes modalScaleUp {

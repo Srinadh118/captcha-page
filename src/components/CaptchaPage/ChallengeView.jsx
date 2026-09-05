@@ -48,16 +48,16 @@ export default function ChallengeView({ challenge, onSelect, onRefresh }) {
   return (
     <div className={styles.container}>
       <div className={styles.mainRow}>
-        {/* LEFT: Captcha Card (Exits Left on select) */}
+        {/* LEFT: Captcha Card (Enters from Left, Exits Left on select) */}
         <div 
-          className={`${styles.cardWrapper} ${isExiting ? styles.cardExiting : ''}`}
-          style={{
-            transform: !isExiting ? `rotateX(${cardTilt.x}deg) rotateY(${cardTilt.y}deg)` : undefined
-          }}
+          className={`${styles.cardWrapper} ${isExiting ? styles.cardExiting : styles.cardEntering}`}
         >
           <div 
             ref={cardRef}
             className={styles.captchaCard}
+            style={{
+              transform: `rotateX(${cardTilt.x}deg) rotateY(${cardTilt.y}deg)`
+            }}
             onMouseMove={handleCardMouseMove}
             onMouseLeave={handleCardMouseLeave}
           >
@@ -80,9 +80,9 @@ export default function ChallengeView({ challenge, onSelect, onRefresh }) {
           </div>
         </div>
 
-        {/* RIGHT: Texts and Staggered 2x2 Options (Exit Right on select) */}
+        {/* RIGHT: Texts and Staggered 2x2 Options (Enters from Right, Exits Right on select) */}
         <div className={styles.contentSide}>
-          <div className={`${styles.headerText} ${isExiting ? styles.headerTextExiting : ''}`}>
+          <div className={`${styles.headerText} ${isExiting ? styles.headerTextExiting : styles.headerTextEntering}`}>
             <span className={styles.badgeTag}>
               <span className={styles.tagDot} />
               VERIFICATION CHALLENGE
@@ -98,12 +98,14 @@ export default function ChallengeView({ challenge, onSelect, onRefresh }) {
           <div className={styles.optionsGrid}>
             {(challenge?.options || ['A7K2P9', 'AJK29P', 'AJL9P2', 'X4M8Q1']).map((opt, idx) => {
               const isSelected = selectedOption === opt;
-              const exitClass = isExiting ? styles[`option${idx + 1}Exiting`] : '';
+              const animClass = isExiting 
+                ? styles[`option${idx + 1}Exiting`] 
+                : styles[`option${idx + 1}Entering`];
 
               return (
                 <div 
                   key={`${opt}-${idx}`} 
-                  className={`${styles.optionItem} ${exitClass}`}
+                  className={`${styles.optionItem} ${animClass}`}
                 >
                   <button
                     className={`${styles.optionBtn} ${isSelected ? styles.selected : ''}`}
@@ -119,8 +121,8 @@ export default function ChallengeView({ challenge, onSelect, onRefresh }) {
         </div>
       </div>
 
-      {/* BOTTOM INCENTIVE PILL (2 lines) */}
-      <div className={`${styles.bottomPillWrapper} ${isExiting ? styles.bottomPillExiting : ''}`}>
+      {/* BOTTOM INCENTIVE PILL (2 lines) - Enters from Bottom */}
+      <div className={`${styles.bottomPillWrapper} ${isExiting ? styles.bottomPillExiting : styles.bottomPillEntering}`}>
         <div className={styles.rewardPill}>
           <img 
             src="/assets/gem-gold.png" 

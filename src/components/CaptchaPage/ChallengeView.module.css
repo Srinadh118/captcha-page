@@ -8,6 +8,7 @@
   align-items: center;
   position: relative;
   z-index: 10;
+  font-family: 'Poppins', sans-serif;
 }
 
 .mainRow {
@@ -22,21 +23,45 @@
 /* ---------------- CAPTCHA CARD ---------------- */
 .cardWrapper {
   perspective: 1000px;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+}
+
+/* Entry animation: Card flies in from the left */
+.cardEntering {
+  animation: cardEnter 0.48s cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
 }
 
 /* Exit animation: Card flies out to the left */
 .cardExiting {
-  transform: translateX(-130px) !important;
-  opacity: 0 !important;
+  animation: cardExit 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
   pointer-events: none;
+}
+
+@keyframes cardEnter {
+  from {
+    transform: translateX(-130px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes cardExit {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-130px);
+    opacity: 0;
+  }
 }
 
 .captchaCard {
   width: 380px;
   height: 270px;
   border-radius: 20px;
-  /* Requirement: gradient top right to bottom left, #0C0013 5% and #632B76 100% */
   background: linear-gradient(to bottom left, #0C0013 5%, #632B76 100%);
   position: relative;
   display: flex;
@@ -47,7 +72,7 @@
   border: 1px solid rgba(168, 85, 247, 0.2);
   user-select: none;
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Cyber corner bracket accents */
@@ -87,8 +112,9 @@
   animation: shimmerMove 6s infinite ease-in-out;
 }
 
+/* Requirement 6: Font JetBrains Mono for captcha text */
 .captchaText {
-  font-family: 'Space Grotesk', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 52px;
   font-weight: 700;
   color: #ffffff;
@@ -111,7 +137,7 @@
   color: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 5;
 }
 
@@ -127,20 +153,45 @@
   display: flex;
   flex-direction: column;
   max-width: 440px;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Exit animation: Header text flies out to the right */
+/* Entrance & Exit animations: Header text */
 .headerText {
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+}
+
+.headerTextEntering {
+  animation: textEnter 0.48s cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
 }
 
 .headerTextExiting {
-  transform: translateX(80px) !important;
-  opacity: 0 !important;
+  animation: textExit 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
   pointer-events: none;
+}
+
+@keyframes textEnter {
+  from {
+    transform: translateX(80px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes textExit {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(80px);
+    opacity: 0;
+  }
 }
 
 .badgeTag {
@@ -162,9 +213,8 @@
   background-color: #a855f7;
 }
 
-/* Requirement 5: "Earn Gems" heading text with white and yellow colors */
 .heading {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 38px;
   font-weight: 800;
   color: #ffffff;
@@ -179,6 +229,7 @@
 }
 
 .description {
+  font-family: 'Poppins', sans-serif;
   font-size: 14px;
   line-height: 1.6;
   color: #b3a5c2;
@@ -194,42 +245,74 @@
 }
 
 .optionItem {
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+  /* container for button */
 }
 
-/* Exit animations: staggered translation to the right */
+/* Staggered entrance from right */
+.option1Entering {
+  animation: optionEnter 0.48s cubic-bezier(0.34, 1.2, 0.64, 1) 0.04s both;
+}
+
+.option2Entering {
+  animation: optionEnter 0.48s cubic-bezier(0.34, 1.2, 0.64, 1) 0.08s both;
+}
+
+.option3Entering {
+  animation: optionEnter 0.48s cubic-bezier(0.34, 1.2, 0.64, 1) 0.12s both;
+}
+
+.option4Entering {
+  animation: optionEnter 0.48s cubic-bezier(0.34, 1.2, 0.64, 1) 0.16s both;
+}
+
+@keyframes optionEnter {
+  from {
+    transform: translateX(90px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Staggered exit to right */
 .option1Exiting {
-  transform: translateX(90px) !important;
-  opacity: 0 !important;
-  transition-delay: 0.04s !important;
+  animation: optionExit 0.38s cubic-bezier(0.4, 0, 0.2, 1) 0.04s both !important;
   pointer-events: none;
 }
 
 .option2Exiting {
-  transform: translateX(90px) !important;
-  opacity: 0 !important;
-  transition-delay: 0.08s !important;
+  animation: optionExit 0.38s cubic-bezier(0.4, 0, 0.2, 1) 0.08s both !important;
   pointer-events: none;
 }
 
 .option3Exiting {
-  transform: translateX(90px) !important;
-  opacity: 0 !important;
-  transition-delay: 0.12s !important;
+  animation: optionExit 0.38s cubic-bezier(0.4, 0, 0.2, 1) 0.12s both !important;
   pointer-events: none;
 }
 
 .option4Exiting {
-  transform: translateX(90px) !important;
-  opacity: 0 !important;
-  transition-delay: 0.16s !important;
+  animation: optionExit 0.38s cubic-bezier(0.4, 0, 0.2, 1) 0.16s both !important;
   pointer-events: none;
 }
 
+@keyframes optionExit {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(90px);
+    opacity: 0;
+  }
+}
+
 /* 
-Option buttons styling:
-Gradient top right to bottom left, #050207 5% and #261333 78%. 
-Border of #4D3467 of weight 2.
+Requirement 6: Font JetBrains Mono for options
+Requirements 3 & 4:
+- Organic ease-in-out transitions
+- Less Y translation (-1px)
 */
 .optionBtn {
   width: 100%;
@@ -239,7 +322,7 @@ Border of #4D3467 of weight 2.
   background: linear-gradient(to bottom left, #050207 5%, #261333 78%);
   border: 2px solid #4D3467;
   color: #ffffff;
-  font-family: 'Space Grotesk', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -247,40 +330,37 @@ Border of #4D3467 of weight 2.
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), 
+              background 0.28s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.28s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   user-select: none;
 }
 
-/* 
-Requirement 3 & 4:
-Selected / hovered button state gradient from top left to bottom right (#140021 5% to #56068B 100%).
-Linear gradient border from top to bottom (#9A59DA 0% to #210141 100%).
-Only bottom shadow effect, NO glow effect.
-*/
 .optionBtn:hover:not(:disabled) {
   background: 
-    linear-gradient(to bottom right, #140021 5%, #56068B 100%) padding-box,
+    linear-gradient(to bottom left, #140021 5%, #56068B 100%) padding-box,
     linear-gradient(to bottom, #9A59DA 0%, #210141 100%) border-box;
   border: 2px solid transparent;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.7);
-  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.6);
+  transform: translateY(-1px);
   color: #ffffff;
 }
 
 .optionBtn.selected {
   background: 
-    linear-gradient(to bottom right, #140021 5%, #56068B 100%) padding-box,
+    linear-gradient(to bottom left, #140021 5%, #56068B 100%) padding-box,
     linear-gradient(to bottom, #9A59DA 0%, #210141 100%) border-box;
   border: 2px solid transparent;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.8);
-  transform: scale(1.02);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.7);
+  transform: translateY(-1px);
   color: #ffffff;
 }
 
 .optionBtn:active:not(:disabled) {
-  transform: scale(0.98);
+  transform: translateY(0) scale(0.99);
 }
 
 .optionBtn:disabled {
@@ -289,20 +369,41 @@ Only bottom shadow effect, NO glow effect.
 
 /* ---------------- BOTTOM REWARD PILL (2 LINES) ---------------- */
 .bottomPillWrapper {
-  transition: opacity 0.3s ease, transform 0.3s ease;
   margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.bottomPillEntering {
+  animation: pillEnter 0.48s cubic-bezier(0.34, 1.2, 0.64, 1) 0.2s both;
 }
 
 .bottomPillExiting {
-  opacity: 0;
-  transform: translateY(20px);
+  animation: pillExit 0.32s ease forwards !important;
+  pointer-events: none;
 }
 
-/* 
-Requirement 8: 
-"Complete verification to earn +1 Gem" should be in 2 lines as shown in the image attached.
-Border: thin gold border
-*/
+@keyframes pillEnter {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pillExit {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
 .rewardPill {
   display: flex;
   align-items: center;

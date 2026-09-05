@@ -9,6 +9,7 @@
   justify-content: center;
   position: relative;
   z-index: 10;
+  font-family: "Poppins", sans-serif;
   animation: fadeIn 0.4s ease-out;
 }
 
@@ -33,16 +34,16 @@
 }
 
 .title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 34px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.5px;
   margin-bottom: 20px;
   text-align: center;
 }
 
 .successTitle {
-  color: #ffffff;
+  color: #efdfff;
 }
 
 .failTitle {
@@ -72,14 +73,23 @@
 }
 
 .gemAmount {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 36px;
   font-weight: 800;
-  color: #ffffff;
   letter-spacing: -0.5px;
 }
 
+/* Requirement 5: "+1" and "+0.5" yellow color */
+.yellowPrefix {
+  color: #efdfff;
+}
+
+.gemWord {
+  color: #ffc700;
+}
+
 .rewardSubtitle {
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   color: #b3a5c2;
   font-weight: 500;
@@ -88,10 +98,10 @@
 
 /* ---------------- ACTION BUTTONS ---------------- */
 /* 
-Requirements 1, 2 & 4:
-- Claim button has same styles as option button.
-- Both claim and no thanks have same hover states as option button.
-- Glow effect when hovered is not required, only bottom shadow effect.
+Requirement 1: only the claim button has same styles as option button, not the no thanks.
+Requirement 2: The no thanks button just has border #EFDFFF of weight 2.
+Requirement 3: The hover states on buttons transition ease in and out.
+Requirement 4: Buttons have less y translation (-1px), organic transition.
 */
 .actionsRow {
   display: flex;
@@ -102,53 +112,100 @@ Requirements 1, 2 & 4:
   max-width: 380px;
 }
 
-.claimBtn, .noThanksBtn {
+.claimBtn {
   flex: 1;
   height: 52px;
   border-radius: 14px;
   background: linear-gradient(to bottom left, #050207 5%, #261333 78%);
-  border: 2px solid #4D3467;
+  border: 2px solid #4d3467;
   color: #ffffff;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition:
+    transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
 }
 
-.claimBtn:hover, .noThanksBtn:hover {
-  background: 
-    linear-gradient(to bottom right, #140021 5%, #56068B 100%) padding-box,
-    linear-gradient(to bottom, #9A59DA 0%, #210141 100%) border-box;
-  border: 2px solid transparent;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.7);
-  transform: translateY(-2px);
-  color: #ffffff;
+.noThanksBtn {
+  flex: 1;
+  height: 52px;
+  border-radius: 14px;
+  background: transparent;
+  border: 2px solid #99949d;
+  color: #efdfff;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition:
+    transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }
 
-.claimBtn:active, .noThanksBtn:active {
-  transform: scale(0.98);
+/* Both claim and no thanks have the exact same hover state styles */
+.claimBtn:hover,
+.noThanksBtn:hover {
+  background:
+    linear-gradient(to bottom left, #140021 5%, #56068b 100%) padding-box,
+    linear-gradient(to bottom, #9a59da 0%, #210141 100%) border-box;
+  border: 2px solid transparent;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.6);
+  transform: translateY(-1px);
+  color: #efdfff;
+}
+
+.claimBtn:active,
+.noThanksBtn:active {
+  transform: translateY(0) scale(0.99);
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes gooyMorph {
-  0% { transform: scale(0.95) rotate(0deg); }
-  50% { transform: scale(1.07) rotate(180deg); }
-  100% { transform: scale(0.95) rotate(360deg); }
+  0% {
+    transform: scale(0.95) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.07) rotate(180deg);
+  }
+  100% {
+    transform: scale(0.95) rotate(360deg);
+  }
 }
 
 @keyframes gemBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }
 
 @media (max-width: 640px) {
@@ -168,7 +225,8 @@ Requirements 1, 2 & 4:
     max-width: 280px;
     gap: 12px;
   }
-  .claimBtn, .noThanksBtn {
+  .claimBtn,
+  .noThanksBtn {
     width: 100%;
   }
 }
