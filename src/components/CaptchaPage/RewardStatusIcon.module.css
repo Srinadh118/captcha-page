@@ -1,0 +1,105 @@
+.iconContainer {
+  position: relative;
+  width: 136px;
+  height: 136px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 12px 0 24px;
+}
+
+/* Rotating outer orbital circle with dots/notches */
+.rotatingOuterRing {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  animation: rotateCircles 7s linear infinite;
+  pointer-events: none;
+}
+
+.successOuter {
+  border: 1.5px dashed rgba(52, 199, 89, 0.45);
+  box-shadow: 0 0 16px rgba(52, 199, 89, 0.2);
+}
+
+.failOuter {
+  border: 1.5px dashed rgba(255, 56, 60, 0.45);
+  box-shadow: 0 0 16px rgba(255, 56, 60, 0.2);
+}
+
+.orbitingDot1, .orbitingDot2 {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.successOuter .orbitingDot1, .successOuter .orbitingDot2 {
+  background-color: #34c759;
+  box-shadow: 0 0 8px #34c759;
+}
+
+.failOuter .orbitingDot1, .failOuter .orbitingDot2 {
+  background-color: #ff383c;
+  box-shadow: 0 0 8px #ff383c;
+}
+
+.orbitingDot1 {
+  top: 10px;
+  left: 20px;
+}
+
+.orbitingDot2 {
+  bottom: 12px;
+  right: 18px;
+}
+
+/* Secondary counter-rotating inner orbital ring */
+.rotatingInnerRing {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  animation: rotateCirclesReverse 10s linear infinite;
+  pointer-events: none;
+}
+
+.successInner {
+  border: 1px dotted rgba(52, 199, 89, 0.35);
+}
+
+.failInner {
+  border: 1px dotted rgba(255, 56, 60, 0.35);
+}
+
+/* Center main SVG icon with entrance animation */
+.centerSvg {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.successGlow {
+  filter: drop-shadow(0 0 20px rgba(52, 199, 89, 0.75));
+}
+
+.failGlow {
+  filter: drop-shadow(0 0 20px rgba(255, 56, 60, 0.75));
+}
+
+@keyframes rotateCircles {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes rotateCirclesReverse {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}

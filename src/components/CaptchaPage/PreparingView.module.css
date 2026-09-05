@@ -1,0 +1,149 @@
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Animated Gooey SVG */
+.gooyWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 440px;
+  height: 480px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.85;
+}
+
+.gooySvg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: gooyMorph 8s infinite alternate ease-in-out;
+}
+
+.gemIcon {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 16px rgba(168, 85, 247, 0.8));
+  animation: gemFloat 3s infinite ease-in-out;
+}
+
+.statusTitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 36px;
+  letter-spacing: -0.3px;
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+/* Concentric ring loader matching PDF Page 6 */
+.spinnerArea {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+.outerRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: #a855f7;
+  border-right-color: #9333ea;
+  animation: rotateOuter 2s linear infinite;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+}
+
+.innerRing {
+  position: absolute;
+  inset: 16px;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  border-bottom-color: #c084fc;
+  border-left-color: #7928ca;
+  animation: rotateInner 1.4s linear infinite reverse;
+}
+
+.waitNotice {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #c4b5fd;
+  text-align: center;
+  margin-bottom: 32px;
+  max-width: 300px;
+}
+
+/* Progress bar */
+.progressBarContainer {
+  width: 100%;
+  max-width: 320px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.progressBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, #7928ca 0%, #a855f7 50%, #c084fc 100%);
+  border-radius: 9999px;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.9);
+  transition: width 0.12s linear;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gooyMorph {
+  0% { transform: scale(0.95) rotate(0deg); }
+  50% { transform: scale(1.08) rotate(180deg); }
+  100% { transform: scale(0.95) rotate(360deg); }
+}
+
+@keyframes gemFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes rotateOuter {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes rotateInner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 640px) {
+  .statusTitle {
+    font-size: 26px;
+  }
+  .spinnerArea {
+    width: 100px;
+    height: 100px;
+  }
+}

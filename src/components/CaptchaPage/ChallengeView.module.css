@@ -1,0 +1,400 @@
+.container {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 20px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.mainRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  width: 100%;
+  margin: 36px 0 48px;
+}
+
+/* ---------------- CAPTCHA CARD ---------------- */
+.cardWrapper {
+  perspective: 1000px;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+}
+
+/* Exit animation: Card flies out to the left */
+.cardExiting {
+  transform: translateX(-130px) !important;
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.captchaCard {
+  width: 380px;
+  height: 270px;
+  border-radius: 20px;
+  /* Requirement 1: gradient top right to bottom left, #0C0013 5% and #632B76 100% */
+  background: linear-gradient(to bottom left, #0C0013 5%, #632B76 100%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 
+              0 0 35px rgba(99, 43, 118, 0.35);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  user-select: none;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.captchaCard:hover {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 
+              0 0 45px rgba(168, 85, 247, 0.45);
+}
+
+/* Cyber corner bracket accents */
+.cornerTL, .cornerBR {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+
+.cornerTL {
+  top: 14px;
+  left: 14px;
+  border-top: 2px solid rgba(192, 132, 252, 0.65);
+  border-left: 2px solid rgba(192, 132, 252, 0.65);
+}
+
+.cornerBR {
+  bottom: 14px;
+  right: 14px;
+  border-bottom: 2px solid rgba(192, 132, 252, 0.65);
+  border-right: 2px solid rgba(192, 132, 252, 0.65);
+}
+
+/* Subtle holographic line shimmer overlay */
+.shimmerOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 40%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 60%
+  );
+  pointer-events: none;
+  background-size: 200% 200%;
+  animation: shimmerMove 6s infinite ease-in-out;
+}
+
+.captchaText {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 52px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 6px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4),
+               0 0 40px rgba(168, 85, 247, 0.6);
+  z-index: 2;
+  position: relative;
+}
+
+.refreshBtn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.refreshBtn:hover {
+  background: rgba(168, 85, 247, 0.25);
+  color: #ffffff;
+  border-color: #a855f7;
+  transform: rotate(90deg);
+}
+
+/* ---------------- RIGHT SIDE / CHALLENGE CONTENT ---------------- */
+.contentSide {
+  display: flex;
+  flex-direction: column;
+  max-width: 440px;
+}
+
+/* Exit animation: Header text flies out to the right */
+.headerText {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+}
+
+.headerTextExiting {
+  transform: translateX(80px) !important;
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.badgeTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #c084fc;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.tagDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #a855f7;
+  box-shadow: 0 0 8px #a855f7;
+}
+
+.heading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 38px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #b3a5c2;
+  max-width: 400px;
+}
+
+/* ---------------- 2x2 OPTIONS GRID ---------------- */
+.optionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.optionItem {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+}
+
+/* Exit animations: staggered translation to the right */
+.option1Exiting {
+  transform: translateX(90px) !important;
+  opacity: 0 !important;
+  transition-delay: 0.04s !important;
+  pointer-events: none;
+}
+
+.option2Exiting {
+  transform: translateX(90px) !important;
+  opacity: 0 !important;
+  transition-delay: 0.08s !important;
+  pointer-events: none;
+}
+
+.option3Exiting {
+  transform: translateX(90px) !important;
+  opacity: 0 !important;
+  transition-delay: 0.12s !important;
+  pointer-events: none;
+}
+
+.option4Exiting {
+  transform: translateX(90px) !important;
+  opacity: 0 !important;
+  transition-delay: 0.16s !important;
+  pointer-events: none;
+}
+
+/* 
+Requirement 2: 
+The option buttons has a gradient that goes from top right to bottom left,
+with #050207 stops at 5% and #261333 stops at 78%. 
+The option button has a border of #4D3467 of weight 2.
+*/
+.optionBtn {
+  width: 100%;
+  min-width: 180px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(to bottom left, #050207 5%, #261333 78%);
+  border: 2px solid #4D3467;
+  color: #ffffff;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  user-select: none;
+}
+
+/* 
+Requirement 3:
+The selected / hovered button state has a gradient the goes from top left to bottom right, 
+with #140021 stops at 5% and #56068B stops at 100%. 
+The selected/ hovered button state has a linear gradient border that goes from top to bottom, 
+with #9A59DA at 0% and #210141 stops at 100%.
+*/
+.optionBtn:hover:not(:disabled) {
+  background: 
+    linear-gradient(to bottom right, #140021 5%, #56068B 100%) padding-box,
+    linear-gradient(to bottom, #9A59DA 0%, #210141 100%) border-box;
+  border: 2px solid transparent;
+  box-shadow: 0 0 20px rgba(154, 89, 218, 0.5), 0 4px 16px rgba(0, 0, 0, 0.6);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.optionBtn.selected {
+  background: 
+    linear-gradient(to bottom right, #140021 5%, #56068B 100%) padding-box,
+    linear-gradient(to bottom, #9A59DA 0%, #210141 100%) border-box;
+  border: 2px solid transparent;
+  box-shadow: 0 0 28px rgba(154, 89, 218, 0.8), 0 4px 20px rgba(0, 0, 0, 0.8);
+  transform: scale(1.02);
+  color: #ffffff;
+}
+
+.optionBtn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.optionBtn:disabled {
+  cursor: default;
+}
+
+/* ---------------- BOTTOM REWARD PILL ---------------- */
+.bottomPillWrapper {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin-top: 16px;
+}
+
+.bottomPillExiting {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.rewardPill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(18, 7, 28, 0.85);
+  border: 1px solid rgba(168, 85, 247, 0.28);
+  border-radius: 9999px;
+  padding: 12px 28px 12px 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(168, 85, 247, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+.pillGem {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(234, 179, 8, 0.6));
+}
+
+.pillText {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #e2d9eb;
+}
+
+.pillText strong {
+  font-weight: 700;
+  color: #facc15;
+}
+
+/* ---------------- MOBILE STYLES (MATCHING PDF PAGES 12-13) ---------------- */
+@media (max-width: 860px) {
+  .mainRow {
+    flex-direction: column;
+    gap: 28px;
+    margin: 16px 0 32px;
+  }
+
+  .headerText {
+    text-align: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .badgeTag {
+    justify-content: center;
+  }
+
+  .heading {
+    font-size: 30px;
+  }
+
+  .description {
+    text-align: center;
+    font-size: 13.5px;
+  }
+
+  .captchaCard {
+    width: 320px;
+    height: 220px;
+  }
+
+  .captchaText {
+    font-size: 42px;
+    letter-spacing: 4px;
+  }
+
+  .optionsGrid {
+    max-width: 340px;
+    gap: 12px;
+  }
+
+  .optionBtn {
+    min-width: unset;
+    height: 52px;
+    font-size: 16px;
+  }
+
+  .rewardPill {
+    padding: 10px 20px;
+    font-size: 12.5px;
+  }
+
+  .pillGem {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@keyframes shimmerMove {
+  0% { background-position: -200% 0; }
+  50% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
