@@ -27,10 +27,10 @@ A modular, cyber-gamified **CAPTCHA Verification Page** built for the **VELoop R
   CLAIM        NO THANKS
    │              │
    ▼              │
-PREPARING         │
+  PREPARING         │
    │              │
    ▼              │
-MOCK AD           │
+  MOCK AD           │
    │              │
    └──────┬───────┘
           ▼
@@ -91,10 +91,12 @@ src/
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js (v18 or higher recommended)
 - npm or pnpm
 
 ### Installation
+
 ```bash
 # Clone the repository and navigate into the folder
 cd captcha-page
@@ -104,15 +106,19 @@ npm install
 ```
 
 ### Development Server
+
 ```bash
 npm run dev
 ```
+
 Open [http://localhost:5173/](http://localhost:5173/) in your browser to view the application.
 
 ### Production Build
+
 ```bash
 npm run build
 ```
+
 Builds the optimized production assets into the `dist/` directory.
 
 ---
@@ -126,21 +132,21 @@ The `CaptchaPage` component is fully modular and self-contained. To integrate it
 3. Import and use `<CaptchaPage />`:
 
 ```jsx
-import CaptchaPage from './components/CaptchaPage';
+import CaptchaPage from "./components/CaptchaPage";
 
 function VerificationScreen() {
   const handleComplete = (result) => {
-    console.log('Verification status:', result.success);
-    console.log('Selected option:', result.selectedOption);
+    console.log("Verification status:", result.success);
+    console.log("Selected option:", result.selectedOption);
   };
 
   const handleGemsUpdate = (newTotalGems) => {
-    console.log('Updated gems:', newTotalGems);
+    console.log("Updated gems:", newTotalGems);
   };
 
   return (
-    <CaptchaPage 
-      initialGems={125.50} 
+    <CaptchaPage
+      initialGems={125.5}
       onComplete={handleComplete}
       onGemsUpdate={handleGemsUpdate}
     />
@@ -150,11 +156,11 @@ function VerificationScreen() {
 
 ### Available Props
 
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `initialGems` | `number` | `125.50` | Initial gem balance displayed in the header badge. |
-| `onComplete` | `(result: { success: boolean, selectedOption: string, correctCode: string }) => void` | `undefined` | Callback invoked when verification check resolves. |
-| `onGemsUpdate` | `(newTotal: number) => void` | `undefined` | Callback invoked when gems are claimed and balance updates. |
+| Prop           | Type                                                                                  | Default     | Description                                                 |
+| :------------- | :------------------------------------------------------------------------------------ | :---------- | :---------------------------------------------------------- |
+| `initialGems`  | `number`                                                                              | `125.50`    | Initial gem balance displayed in the header badge.          |
+| `onComplete`   | `(result: { success: boolean, selectedOption: string, correctCode: string }) => void` | `undefined` | Callback invoked when verification check resolves.          |
+| `onGemsUpdate` | `(newTotal: number) => void`                                                          | `undefined` | Callback invoked when gems are claimed and balance updates. |
 
 ---
 
