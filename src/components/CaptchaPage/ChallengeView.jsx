@@ -143,7 +143,7 @@ export default function ChallengeView({ challenge, onSelect, onRefresh }) {
       >
         <div className={styles.rewardPill}>
           <img
-            src="/assets/gem-gold.png"
+            src="/assets/gem-gold.webp"
             alt="Gold Gem"
             className={styles.pillGem}
           />

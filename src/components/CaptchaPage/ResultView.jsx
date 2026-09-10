@@ -43,7 +43,7 @@ export default function ResultView({ success = true, onClaim, onNoThanks }) {
       <div className={`${styles.rewardArea} ${styles.revealReward}`}>
         <div className={styles.gemAmountRow}>
           <img
-            src="/assets/gem-gold.png"
+            src="/assets/gem-gold.webp"
             alt="Gold Gem"
             className={styles.gemIcon}
           />

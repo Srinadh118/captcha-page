@@ -40,7 +40,7 @@ export default function CaptchaHeader({ gems = 125.5 }) {
 
         <div key={bumpKey} className={`${styles.gemBadge} ${styles.bump}`}>
           <img
-            src="/assets/gem-gold.png"
+            src="/assets/gem-gold.webp"
             alt="Gold Gem"
             className={styles.gemIcon}
           />

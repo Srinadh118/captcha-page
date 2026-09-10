@@ -74,7 +74,7 @@ export default function MockAdModal({
 
         <div className={styles.rewardBanner}>
           <img
-            src="/assets/gem-gold.png"
+            src="/assets/gem-gold.webp"
             alt="Gold Gem"
             className={styles.gemIcon}
           />

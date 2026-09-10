@@ -42,7 +42,7 @@ export default function PreparingView({ onReady }) {
 
       {/* Purple Gem */}
       <img
-        src="/assets/gem-purple.png"
+        src="/assets/gem-purple.webp"
         alt="Preparing Gem"
         className={styles.gemIcon}
       />

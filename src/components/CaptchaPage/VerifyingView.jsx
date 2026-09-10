@@ -51,7 +51,7 @@ export default function VerifyingView({ onComplete }) {
 
       {/* Purple Gem */}
       <img
-        src="/assets/gem-purple.png"
+        src="/assets/gem-purple.webp"
         alt="Verifying Gem"
         className={styles.gemIcon}
       />
