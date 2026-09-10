@@ -36,7 +36,7 @@ The text has a linear gradient as well, from 0% #050207 top-right to 100% #26133
   transform: rotate(-90deg);
   transform-origin: top left;
   font-family: "Gasoek One", sans-serif;
-  font-size: clamp(130px, 23vh, 200px);
+  font-size: clamp(140px, 24vh, 200px);
   line-height: 1;
   white-space: nowrap;
   letter-spacing: 4px;

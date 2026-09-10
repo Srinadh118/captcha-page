@@ -86,6 +86,33 @@ export default function VerifyingView({ onComplete }) {
           style={{ width: `${progress}%` }}
         />
       </div>
+
+      {/* Security Badges Row */}
+      <div className={styles.securityBadges}>
+        <span className={styles.badge}>
+          <span className={styles.badgeIcon}>🔐</span>
+          <span className={styles.badgeLabel}>Encrypted</span>
+        </span>
+        <span className={styles.badgeDivider} />
+        <span className={styles.badge}>
+          <span className={styles.badgeIcon}>🛡️</span>
+          <span className={styles.badgeLabel}>Protected</span>
+        </span>
+        <span className={styles.badgeDivider} />
+        <span className={styles.badge}>
+          <span className={`${styles.badgeIcon} ${styles.checkIcon}`}>✓</span>
+          <span className={styles.badgeLabel}>Verified</span>
+        </span>
+      </div>
+
+      {/* Secure Pill Footer */}
+      <div className={styles.securePill}>
+        <span className={styles.securePillDot} />
+        <span className={styles.securePillLock}>🔒</span>
+        <span className={styles.securePillText}>Secure &amp; Verified Connection</span>
+        <span className={styles.securePillShield}>🛡️</span>
+      </div>
+
     </div>
   );
 }
