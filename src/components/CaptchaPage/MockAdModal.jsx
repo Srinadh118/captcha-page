@@ -10,12 +10,14 @@ export default function MockAdModal({
   onSkip,
 }) {
   const [countdown, setCountdown] = useState(3);
+  const [canSkip, setCanSkip] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {
           clearInterval(timer);
+          setCanSkip(true);
           return 0;
         }
         return prev - 1;
@@ -45,19 +47,15 @@ export default function MockAdModal({
 
   return (
     <div className={styles.container}>
-      {/* Animated Gooey SVG Background */}
-      <div className={styles.gooyWrapper}>
-        <img
-          src="/assets/gooy.svg"
-          alt="Gooey Aura"
-          className={styles.gooySvg}
-        />
-      </div>
-
       <div className={styles.adCard}>
         <div className={styles.adTopBar}>
           <span className={styles.sponsorTag}>Featured Partner</span>
-          <button className={styles.skipBtn} onClick={onSkip}>
+          <button
+            className={styles.skipBtn}
+            onClick={onSkip}
+            disabled={!canSkip}
+            style={{ cursor: canSkip ? "pointer" : "not-allowed" }}
+          >
             {countdown > 0 ? `Skip in ${countdown}s` : "Skip Reward"}
           </button>
         </div>

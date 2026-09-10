@@ -33,7 +33,7 @@ The gooy svg should be animated when shown in the verification, reward and mock 
   width: 100%;
   height: 100%;
   object-fit: contain;
-  animation: gooyMorph 8s infinite alternate ease-in-out;
+  animation: gooyMorph 20s infinite alternate linear;
 }
 
 .gemIcon {
@@ -316,13 +316,10 @@ The gooy svg should be animated when shown in the verification, reward and mock 
 
 @keyframes gooyMorph {
   0% {
-    transform: scale(0.95) rotate(0deg);
-  }
-  50% {
-    transform: scale(1.08) rotate(180deg);
+    transform: rotate(0deg);
   }
   100% {
-    transform: scale(0.95) rotate(360deg);
+    transform: rotate(90deg);
   }
 }
 

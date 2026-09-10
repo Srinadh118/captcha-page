@@ -10,7 +10,6 @@
   position: relative;
   z-index: 10;
   font-family: "Poppins", sans-serif;
-  animation: fadeIn 0.4s ease-out;
 }
 
 /* Animated Gooey SVG Backdrop */
@@ -30,7 +29,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  animation: gooyMorph 9s infinite alternate ease-in-out;
+  animation: gooyMorph 20s infinite alternate linear;
 }
 
 .title {
@@ -66,10 +65,12 @@
 }
 
 .gemIcon {
-  width: 38px;
-  height: 38px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
-  animation: gemBounce 2.5s infinite ease-in-out;
+  animation:
+    gemPopIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+    gemFloat 10s 0.5s ease-in-out infinite;
 }
 
 .gemAmount {
@@ -79,7 +80,6 @@
   letter-spacing: -0.5px;
 }
 
-/* Requirement 5: "+1" and "+0.5" yellow color */
 .yellowPrefix {
   color: #efdfff;
 }
@@ -96,13 +96,91 @@
   text-align: center;
 }
 
+/* ---------------- STAGGERED REVEAL CLASSES ---------------- */
+.revealTitle {
+  animation: revealUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+}
+
+.revealIcon {
+  animation: revealUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+.revealReward {
+  animation: revealUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
+}
+
+.revealButtons {
+  animation: revealUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both;
+}
+
+.revealPill {
+  animation: revealUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.48s both;
+}
+
+/* ---------------- SECURE REWARD PILL ---------------- */
+.securePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 56px;
+  padding: 9px 20px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    135deg,
+    rgba(121, 40, 202, 0.18) 0%,
+    rgba(168, 85, 247, 0.12) 50%,
+    rgba(121, 40, 202, 0.18) 100%
+  );
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 0 18px rgba(168, 85, 247, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.securePill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+.securePillDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow:
+    0 0 6px #4ade80,
+    0 0 12px rgba(74, 222, 128, 0.5);
+  animation: dotPulse 2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+.securePillIcon {
+  color: #a78bfa;
+  flex-shrink: 0;
+}
+
+.securePillText {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #ddd6fe;
+  font-family: "Poppins", sans-serif;
+  white-space: nowrap;
+}
+
 /* ---------------- ACTION BUTTONS ---------------- */
-/* 
-Requirement 1: only the claim button has same styles as option button, not the no thanks.
-Requirement 2: The no thanks button just has border #EFDFFF of weight 2.
-Requirement 3: The hover states on buttons transition ease in and out.
-Requirement 4: Buttons have less y translation (-1px), organic transition.
-*/
 .actionsRow {
   display: flex;
   align-items: center;
@@ -139,7 +217,7 @@ Requirement 4: Buttons have less y translation (-1px), organic transition.
   flex: 1;
   height: 52px;
   border-radius: 14px;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.4);
   border: 2px solid #99949d;
   color: #efdfff;
   font-family: "Poppins", sans-serif;
@@ -172,39 +250,84 @@ Requirement 4: Buttons have less y translation (-1px), organic transition.
 
 .claimBtn:active,
 .noThanksBtn:active {
+  background:
+    linear-gradient(to bottom left, #140021 5%, #56068b 100%) padding-box,
+    linear-gradient(to bottom, #9a59da 0%, #210141 100%) border-box;
+  border: 2px solid transparent;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.6);
+  color: #efdfff;
   transform: translateY(0) scale(0.99);
 }
 
-@keyframes fadeIn {
+@keyframes revealUp {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(20px) scale(0.97);
   }
   to {
     opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gemPopIn {
+  0% {
+    transform: scale(0) rotate(-15deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.25) rotate(8deg);
+    opacity: 0.8;
+  }
+  80% {
+    transform: scale(0.9) rotate(-4deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes gemFloat {
+  0%,
+  100% {
     transform: translateY(0);
+    filter: drop-shadow(0 0 8px rgba(255, 199, 0, 0.5));
+  }
+  50% {
+    transform: translateY(-6px);
+    filter: drop-shadow(0 6px 14px rgba(255, 199, 0, 0.7));
+  }
+}
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
   }
 }
 
 @keyframes gooyMorph {
   0% {
-    transform: scale(0.95) rotate(0deg);
-  }
-  50% {
-    transform: scale(1.07) rotate(180deg);
+    transform: rotate(0deg);
   }
   100% {
-    transform: scale(0.95) rotate(360deg);
-  }
-}
-
-@keyframes gemBounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
+    transform: rotate(90deg);
   }
 }
 

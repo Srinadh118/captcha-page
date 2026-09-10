@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import styles from "./ResultView.module.css";
 import RewardStatusIcon from "./RewardStatusIcon";
 import { playSound } from "./utils/audioEffects";
+import { ShieldCheck } from "lucide-react";
 
 export default function ResultView({ success = true, onClaim, onNoThanks }) {
   useEffect(() => {
@@ -26,16 +27,20 @@ export default function ResultView({ success = true, onClaim, onNoThanks }) {
 
       {/* Title */}
       <h2
-        className={`${styles.title} ${success ? styles.successTitle : styles.failTitle}`}
+        className={`${styles.title} ${styles.revealTitle} ${
+          success ? styles.successTitle : styles.failTitle
+        }`}
       >
         {success ? "Verification complete!" : "Verification unsuccessful!"}
       </h2>
 
       {/* Rotating Circles Icon */}
-      <RewardStatusIcon success={success} />
+      <div className={styles.revealIcon}>
+        <RewardStatusIcon success={success} />
+      </div>
 
       {/* Reward Amount Display */}
-      <div className={styles.rewardArea}>
+      <div className={`${styles.rewardArea} ${styles.revealReward}`}>
         <div className={styles.gemAmountRow}>
           <img
             src="/assets/gem-gold.png"
@@ -51,13 +56,22 @@ export default function ResultView({ success = true, onClaim, onNoThanks }) {
       </div>
 
       {/* Action Buttons */}
-      <div className={styles.actionsRow}>
+      <div className={`${styles.actionsRow} ${styles.revealButtons}`}>
         <button className={styles.claimBtn} onClick={onClaim}>
           Claim
         </button>
         <button className={styles.noThanksBtn} onClick={onNoThanks}>
           No Thanks
         </button>
+      </div>
+
+      {/* Secure Reward Pill */}
+      <div className={`${styles.securePill} ${styles.revealPill}`}>
+        <span className={styles.securePillDot} />
+        <ShieldCheck size={13} className={styles.securePillIcon} />
+        <span className={styles.securePillText}>
+          {success ? "Secure Reward Transfer" : "Safe & Encrypted Session"}
+        </span>
       </div>
     </div>
   );

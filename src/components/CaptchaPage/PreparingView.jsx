@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./PreparingView.module.css";
 import { playSound } from "./utils/audioEffects";
+import { BadgeCheck, GlobeLock, ShieldLock } from "lucide-react";
 
 export default function PreparingView({ onReady }) {
   const [progress, setProgress] = useState(10);
@@ -52,6 +53,11 @@ export default function PreparingView({ onReady }) {
       <div className={styles.spinnerArea}>
         <div className={styles.outerRing} />
         <div className={styles.innerRing} />
+        <img
+          src="/assets/gear-icon.png"
+          alt="Gear icon"
+          className={styles.gearIcon}
+        />
       </div>
 
       <p className={styles.waitNotice}>
@@ -66,6 +72,38 @@ export default function PreparingView({ onReady }) {
           className={styles.progressBarFill}
           style={{ width: `${progress}%` }}
         />
+      </div>
+
+      {/* Security Badges Row */}
+      <div className={styles.securityBadges}>
+        <span className={styles.badge}>
+          <span className={styles.badgeIcon}>
+            <GlobeLock size={16} />
+          </span>
+          <span className={styles.badgeLabel}>Encrypted</span>
+        </span>
+        <span className={styles.badgeDivider} />
+        <span className={styles.badge}>
+          <span className={styles.badgeIcon}>
+            <ShieldLock size={16} />
+          </span>
+          <span className={styles.badgeLabel}>Protected</span>
+        </span>
+        <span className={styles.badgeDivider} />
+        <span className={styles.badge}>
+          <span className={`${styles.badgeIcon} ${styles.checkIcon}`}>
+            <BadgeCheck size={16} />
+          </span>
+          <span className={styles.badgeLabel}>Verified</span>
+        </span>
+      </div>
+
+      {/* Secure Pill Footer */}
+      <div className={styles.securePill}>
+        <span className={styles.securePillDot} />
+        <span className={styles.securePillText}>
+          Secure &amp; Verified Connection
+        </span>
       </div>
     </div>
   );

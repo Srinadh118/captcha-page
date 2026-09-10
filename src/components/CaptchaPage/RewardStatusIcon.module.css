@@ -27,19 +27,22 @@
   box-shadow: 0 0 16px rgba(255, 56, 60, 0.2);
 }
 
-.orbitingDot1, .orbitingDot2 {
+.orbitingDot1,
+.orbitingDot2 {
   position: absolute;
   width: 5px;
   height: 5px;
   border-radius: 50%;
 }
 
-.successOuter .orbitingDot1, .successOuter .orbitingDot2 {
+.successOuter .orbitingDot1,
+.successOuter .orbitingDot2 {
   background-color: #34c759;
   box-shadow: 0 0 8px #34c759;
 }
 
-.failOuter .orbitingDot1, .failOuter .orbitingDot2 {
+.failOuter .orbitingDot1,
+.failOuter .orbitingDot2 {
   background-color: #ff383c;
   box-shadow: 0 0 8px #ff383c;
 }
@@ -78,7 +81,9 @@
   object-fit: contain;
   position: relative;
   z-index: 2;
-  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation:
+    popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    rotateCirclesReverse 5s linear infinite;
 }
 
 .successGlow {
@@ -89,17 +94,54 @@
   filter: drop-shadow(0 0 20px rgba(255, 56, 60, 0.75));
 }
 
+.svgContainer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.tickSvgIcon {
+  width: 30%;
+  height: 30%;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+.crossSvgIcon {
+  width: 20%;
+  height: 20%;
+  margin-left: 2px;
+  margin-top: 2px;
+}
+
 @keyframes rotateCircles {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes rotateCirclesReverse {
-  0% { transform: rotate(360deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 @keyframes popIn {
-  0% { transform: scale(0.6); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
