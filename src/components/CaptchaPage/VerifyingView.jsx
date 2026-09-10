@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import styles from './VerifyingView.module.css';
-import { playSound } from './utils/audioEffects';
+import { useEffect, useState } from "react";
+import styles from "./VerifyingView.module.css";
+import { playSound } from "./utils/audioEffects";
 
 export default function VerifyingView({ onComplete }) {
-  const [phase, setPhase] = useState('verifying'); // 'verifying' -> 500ms -> 'checking'
+  const [phase, setPhase] = useState("verifying"); // 'verifying' -> 500ms -> 'checking'
   const [progress, setProgress] = useState(10);
 
   useEffect(() => {
-    playSound('verify');
+    playSound("verify");
 
     // 500ms transition to checking phase as specified in prompt
     const checkTimer = setTimeout(() => {
-      setPhase('checking');
+      setPhase("checking");
     }, 500);
 
     // Progress bar animation
@@ -41,23 +41,23 @@ export default function VerifyingView({ onComplete }) {
     <div className={styles.container}>
       {/* Animated Gooey SVG Background */}
       <div className={styles.gooyWrapper}>
-        <img 
-          src="/assets/gooy.svg" 
-          alt="Gooey Aura" 
-          className={styles.gooySvg} 
+        <img
+          src="/assets/gooy.svg"
+          alt="Gooey Aura"
+          className={styles.gooySvg}
         />
       </div>
 
       {/* Purple Gem */}
-      <img 
-        src="/assets/gem-purple.png" 
-        alt="Verifying Gem" 
-        className={styles.gemIcon} 
+      <img
+        src="/assets/gem-purple.png"
+        alt="Verifying Gem"
+        className={styles.gemIcon}
       />
 
       {/* Dynamic Status Text: Verifying... -> Checking... */}
       <h2 className={styles.statusTitle}>
-        {phase === 'verifying' ? 'Verifying...' : 'Checking...'}
+        {phase === "verifying" ? "Verifying..." : "Checking..."}
       </h2>
 
       {/* Orbital Ring with Lock Icon */}
@@ -66,22 +66,24 @@ export default function VerifyingView({ onComplete }) {
           <div className={styles.orbitDot} />
         </div>
         <div className={styles.innerRing} />
-        <img 
-          src="/assets/lock.png" 
-          alt="Security Lock" 
-          className={styles.lockIcon} 
+        <img
+          src="/assets/lock.png"
+          alt="Security Lock"
+          className={styles.lockIcon}
         />
       </div>
 
       <p className={styles.waitNotice}>
-        Please wait while we<br />Check your answer.
+        Please wait while we
+        <br />
+        Check your answer.
       </p>
 
       {/* Progress Bar */}
       <div className={styles.progressBarContainer}>
-        <div 
-          className={styles.progressBarFill} 
-          style={{ width: `${progress}%` }} 
+        <div
+          className={styles.progressBarFill}
+          style={{ width: `${progress}%` }}
         />
       </div>
     </div>

@@ -220,7 +220,7 @@ Requirement 4: Buttons have less y translation (-1px), organic transition.
     height: 32px;
   }
   .actionsRow {
-    flex-direction: column;
+    /* flex-direction: column; */
     width: 100%;
     max-width: 280px;
     gap: 12px;

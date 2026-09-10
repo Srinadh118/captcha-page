@@ -77,10 +77,24 @@ The text has a linear gradient as well, from 0% #050207 top-right to 100% #26133
   padding: 10px 16px 40px;
 }
 
+@media (max-width: 1024px) {
+  .captchaWatermark {
+    left: 5%;
+    top: 105%;
+    font-size: clamp(120px, 21.5vh, 180px);
+  }
+}
 @media (max-width: 768px) {
   .captchaWatermark {
-    left: 8px;
-    font-size: clamp(65px, 15vw, 100px);
-    opacity: 0.4;
+    left: 12%;
+    top: 100%;
+    font-size: clamp(120px, 21vw, 180px);
+  }
+}
+@media (max-width: 640px) {
+  .captchaWatermark {
+    left: 1%;
+    top: 100%;
+    font-size: clamp(150px, 24vw, 200px);
   }
 }

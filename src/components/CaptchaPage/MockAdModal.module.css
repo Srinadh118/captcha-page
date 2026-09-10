@@ -33,7 +33,11 @@
 
 .adCard {
   width: 100%;
-  background: linear-gradient(145deg, rgba(28, 12, 42, 0.95), rgba(12, 4, 18, 0.98));
+  background: linear-gradient(
+    145deg,
+    rgba(28, 12, 42, 0.95),
+    rgba(12, 4, 18, 0.98)
+  );
   border: 1px solid rgba(168, 85, 247, 0.35);
   border-radius: 24px;
   padding: 28px 24px;
@@ -101,7 +105,7 @@
 }
 
 .adTitle {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 24px;
   font-weight: 700;
   color: #ffffff;
@@ -139,7 +143,7 @@
 .rewardNotice {
   font-size: 14px;
   font-weight: 700;
-  color: #FFC700;
+  color: #ffc700;
 }
 
 /* 
@@ -151,17 +155,18 @@ Collect reward button has same styles as option button (and only bottom shadow w
   height: 56px;
   border-radius: 14px;
   background: linear-gradient(to bottom left, #050207 5%, #261333 78%);
-  border: 2px solid #4D3467;
+  border: 2px solid #4d3467;
   color: #ffffff;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), 
-              background 0.28s cubic-bezier(0.4, 0, 0.2, 1), 
-              border-color 0.28s cubic-bezier(0.4, 0, 0.2, 1), 
-              box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -170,9 +175,9 @@ Collect reward button has same styles as option button (and only bottom shadow w
 }
 
 .claimRewardBtn:hover {
-  background: 
-    linear-gradient(to bottom left, #140021 5%, #56068B 100%) padding-box,
-    linear-gradient(to bottom, #9A59DA 0%, #210141 100%) border-box;
+  background:
+    linear-gradient(to bottom left, #140021 5%, #56068b 100%) padding-box,
+    linear-gradient(to bottom, #9a59da 0%, #210141 100%) border-box;
   border: 2px solid transparent;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.6);
   transform: translateY(-1px);
@@ -184,22 +189,74 @@ Collect reward button has same styles as option button (and only bottom shadow w
 }
 
 @keyframes modalScaleUp {
-  0% { opacity: 0; transform: scale(0.92); }
-  100% { opacity: 1; transform: scale(1); }
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes gooyMorph {
-  0% { transform: scale(0.95) rotate(0deg); }
-  50% { transform: scale(1.08) rotate(180deg); }
-  100% { transform: scale(0.95) rotate(360deg); }
+  0% {
+    transform: scale(0.95) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.08) rotate(180deg);
+  }
+  100% {
+    transform: scale(0.95) rotate(360deg);
+  }
 }
 
 @media (max-width: 640px) {
+  .container {
+    padding: 0;
+  }
   .adCard {
     padding: 20px 18px;
     border-radius: 20px;
   }
   .adTitle {
     font-size: 20px;
+  }
+}
+
+@media (max-width: 375px) {
+  .container {
+    padding: 0;
+  }
+
+  .sponsorTag {
+    font-size: 8px;
+  }
+
+  .skipBtn {
+    font-size: 12px;
+  }
+
+  .adCard {
+    padding: 12px 14px;
+    border-radius: 16px;
+  }
+  .adTitle {
+    font-size: 20px;
+  }
+  .adDesc {
+    font-size: 12px;
+    max-width: 300px;
+  }
+  .rewardBanner {
+    padding: 8px;
+    margin-bottom: 16px;
+  }
+  .rewardNotice {
+    font-size: 12px;
+  }
+  .claimRewardBtn {
+    padding: 12px;
+    font-size: 12px;
   }
 }

@@ -8,16 +8,25 @@
   align-items: center;
   position: relative;
   z-index: 10;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .mainRow {
+  display: grid;
+  grid-template-areas:
+    "captchaCard contentSide"
+    "captchaCard optionsGrid";
+  justify-content: center;
+  column-gap: 56px;
+  width: 100%;
+  margin: 36px 0 44px;
+}
+
+.cardSide {
+  grid-area: captchaCard;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 56px;
-  width: 100%;
-  margin: 36px 0 44px;
 }
 
 /* ---------------- CAPTCHA CARD ---------------- */
@@ -62,7 +71,7 @@
   width: 380px;
   height: 270px;
   border-radius: 20px;
-  background: linear-gradient(to bottom left, #0C0013 5%, #632B76 100%);
+  background: linear-gradient(to bottom left, #0c0013 5%, #632b76 100%);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -72,11 +81,14 @@
   border: 1px solid rgba(168, 85, 247, 0.2);
   user-select: none;
   overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    transform 0.4s cubic-bezier(0.53, 0.08, 0.42, 0.93),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Cyber corner bracket accents */
-.cornerTL, .cornerBR {
+.cornerTL,
+.cornerBR {
   position: absolute;
   width: 22px;
   height: 22px;
@@ -114,7 +126,7 @@
 
 /* Requirement 6: Font JetBrains Mono for captcha text */
 .captchaText {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 52px;
   font-weight: 700;
   color: #ffffff;
@@ -140,27 +152,34 @@
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 5;
 }
+.rotateIcon {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: rotate(0deg);
+}
 
 .refreshBtn:hover {
   background: rgba(168, 85, 247, 0.25);
   color: #ffffff;
   border-color: #a855f7;
+}
+
+.refreshBtn:hover .rotateIcon {
   transform: rotate(90deg);
 }
 
 /* ---------------- RIGHT SIDE / CHALLENGE CONTENT ---------------- */
 .contentSide {
+  grid-area: contentSide;
   display: flex;
   flex-direction: column;
   max-width: 440px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Entrance & Exit animations: Header text */
 .headerText {
   display: flex;
   flex-direction: column;
-  margin-bottom: 24px;
 }
 
 .headerTextEntering {
@@ -214,7 +233,7 @@
 }
 
 .heading {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 38px;
   font-weight: 800;
   color: #ffffff;
@@ -224,16 +243,37 @@
 }
 
 .headingHighlight {
-  color: #FFC700;
+  color: #ffc700;
   margin-left: 8px;
 }
 
 .description {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   line-height: 1.6;
   color: #b3a5c2;
   max-width: 400px;
+}
+
+/* Options container wrapping instruction text and options grid */
+.optionsContainer {
+  grid-area: optionsGrid;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 440px;
+}
+
+/* ---------------- INSTRUCTION TEXT (above options grid) ---------------- */
+.instructionText {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #b3a5c2;
+  margin-bottom: 24px;
+  width: 100%;
+  max-width: 440px;
+  /* order: 3; */
 }
 
 /* ---------------- 2x2 OPTIONS GRID ---------------- */
@@ -242,6 +282,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   width: 100%;
+  max-width: 440px;
 }
 
 .optionItem {
@@ -316,13 +357,13 @@ Requirements 3 & 4:
 */
 .optionBtn {
   width: 100%;
-  min-width: 180px;
+  min-width: 192px;
   height: 56px;
   border-radius: 14px;
   background: linear-gradient(to bottom left, #050207 5%, #261333 78%);
-  border: 2px solid #4D3467;
+  border: 2px solid #4d3467;
   color: #ffffff;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -331,18 +372,19 @@ Requirements 3 & 4:
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), 
-              background 0.28s cubic-bezier(0.4, 0, 0.2, 1), 
-              border-color 0.28s cubic-bezier(0.4, 0, 0.2, 1), 
-              box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   user-select: none;
 }
 
 .optionBtn:hover:not(:disabled) {
-  background: 
-    linear-gradient(to bottom left, #140021 5%, #56068B 100%) padding-box,
-    linear-gradient(to bottom, #9A59DA 0%, #210141 100%) border-box;
+  background:
+    linear-gradient(to bottom left, #140021 5%, #56068b 100%) padding-box,
+    linear-gradient(to bottom, #9a59da 0%, #210141 100%) border-box;
   border: 2px solid transparent;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.6);
   transform: translateY(-1px);
@@ -350,9 +392,9 @@ Requirements 3 & 4:
 }
 
 .optionBtn.selected {
-  background: 
-    linear-gradient(to bottom left, #140021 5%, #56068B 100%) padding-box,
-    linear-gradient(to bottom, #9A59DA 0%, #210141 100%) border-box;
+  background:
+    linear-gradient(to bottom left, #140021 5%, #56068b 100%) padding-box,
+    linear-gradient(to bottom, #9a59da 0%, #210141 100%) border-box;
   border: 2px solid transparent;
   box-shadow: 0 5px 14px rgba(0, 0, 0, 0.7);
   transform: translateY(-1px);
@@ -370,7 +412,7 @@ Requirements 3 & 4:
 /* ---------------- BOTTOM REWARD PILL (2 LINES) ---------------- */
 .bottomPillWrapper {
   margin-top: 20px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .bottomPillEntering {
@@ -429,31 +471,45 @@ Requirements 3 & 4:
 }
 
 .pillTextLine1 {
-  font-size: 14.5px;
+  font-size: 0.875rem;
   font-weight: 500;
   color: #ffffff;
   letter-spacing: -0.2px;
 }
 
 .pillTextLine2 {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 800;
-  color: #FFC700;
+  color: #ffc700;
   letter-spacing: -0.2px;
 }
 
-/* ---------------- MOBILE STYLES ---------------- */
+/* ---------------- MOBILE & TABLET STYLES (≤ 860px) ---------------- */
 @media (max-width: 860px) {
+  .container {
+    padding: 20px 24px 40px;
+  }
+
   .mainRow {
-    flex-direction: column;
-    gap: 28px;
-    margin: 16px 0 32px;
+    display: grid;
+    grid-template-areas:
+      "contentSide"
+      "captchaCard"
+      "optionsGrid";
+    justify-content: center;
+    row-gap: 14px;
+    margin: 0 0 12px;
+  }
+
+  /* Content side (header) moves above card on mobile/tablet */
+  .contentSide {
+    width: 100%;
+    max-width: 380px;
   }
 
   .headerText {
     text-align: center;
     align-items: center;
-    margin-bottom: 20px;
   }
 
   .badgeTag {
@@ -466,7 +522,14 @@ Requirements 3 & 4:
 
   .description {
     text-align: center;
-    font-size: 13.5px;
+    font-size: 12px;
+  }
+
+  .instructionText {
+    font-size: 12px;
+    margin-bottom: 14px;
+    max-width: 340px;
+    text-align: center;
   }
 
   .captchaCard {
@@ -489,10 +552,20 @@ Requirements 3 & 4:
     height: 52px;
     font-size: 16px;
   }
+
+  .pillTextLine1 {
+    font-size: 0.8rem;
+  }
 }
 
 @keyframes shimmerMove {
-  0% { background-position: -200% 0; }
-  50% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  50% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }

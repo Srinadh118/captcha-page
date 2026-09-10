@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 
 captcha_page_task.pdf
+.env
