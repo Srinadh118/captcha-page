@@ -113,8 +113,7 @@ export default function CaptchaPage({
         )}
 
         {flowState === "verifying" && (
-          // <VerifyingView onComplete={handleVerificationDone} />
-          <VerifyingView />
+          <VerifyingView onComplete={handleVerificationDone} />
         )}
 
         {flowState === "result" && (

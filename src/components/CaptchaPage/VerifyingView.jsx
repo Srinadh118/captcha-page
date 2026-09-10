@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./VerifyingView.module.css";
 import { playSound } from "./utils/audioEffects";
+import { BadgeCheck, GlobeLock, ShieldLock } from "lucide-react";
 
 export default function VerifyingView({ onComplete }) {
   const [phase, setPhase] = useState("verifying"); // 'verifying' -> 500ms -> 'checking'
@@ -90,17 +91,23 @@ export default function VerifyingView({ onComplete }) {
       {/* Security Badges Row */}
       <div className={styles.securityBadges}>
         <span className={styles.badge}>
-          <span className={styles.badgeIcon}>🔐</span>
+          <span className={styles.badgeIcon}>
+            <GlobeLock size={16} />
+          </span>
           <span className={styles.badgeLabel}>Encrypted</span>
         </span>
         <span className={styles.badgeDivider} />
         <span className={styles.badge}>
-          <span className={styles.badgeIcon}>🛡️</span>
+          <span className={styles.badgeIcon}>
+            <ShieldLock size={16} />
+          </span>
           <span className={styles.badgeLabel}>Protected</span>
         </span>
         <span className={styles.badgeDivider} />
         <span className={styles.badge}>
-          <span className={`${styles.badgeIcon} ${styles.checkIcon}`}>✓</span>
+          <span className={`${styles.badgeIcon} ${styles.checkIcon}`}>
+            <BadgeCheck size={16} />
+          </span>
           <span className={styles.badgeLabel}>Verified</span>
         </span>
       </div>
@@ -108,11 +115,10 @@ export default function VerifyingView({ onComplete }) {
       {/* Secure Pill Footer */}
       <div className={styles.securePill}>
         <span className={styles.securePillDot} />
-        <span className={styles.securePillLock}>🔒</span>
-        <span className={styles.securePillText}>Secure &amp; Verified Connection</span>
-        <span className={styles.securePillShield}>🛡️</span>
+        <span className={styles.securePillText}>
+          Secure &amp; Verified Connection
+        </span>
       </div>
-
     </div>
   );
 }

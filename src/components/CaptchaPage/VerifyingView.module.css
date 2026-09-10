@@ -121,7 +121,7 @@ The gooy svg should be animated when shown in the verification, reward and mock 
   line-height: 1.5;
   color: #c4b5fd;
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 18px;
   max-width: 300px;
 }
 
@@ -130,6 +130,7 @@ The gooy svg should be animated when shown in the verification, reward and mock 
   width: 100%;
   max-width: 320px;
   height: 6px;
+  margin-bottom: 36px;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 9999px;
   overflow: hidden;
@@ -150,8 +151,8 @@ The gooy svg should be animated when shown in the verification, reward and mock 
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 20px;
-  animation: fadeInUp 0.5s ease-out 0.3s both;
+  margin-bottom: 16px;
+  animation: fadeInUp 0.2s ease-out 0.2s both;
 }
 
 .badge {
@@ -164,7 +165,10 @@ The gooy svg should be animated when shown in the verification, reward and mock 
   border: 1px solid rgba(168, 85, 247, 0.25);
   backdrop-filter: blur(8px);
   cursor: default;
-  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
+  transition:
+    background 0.25s,
+    border-color 0.25s,
+    box-shadow 0.25s;
 }
 
 .badge:hover {
@@ -176,6 +180,7 @@ The gooy svg should be animated when shown in the verification, reward and mock 
 .badgeIcon {
   font-size: 13px;
   line-height: 1;
+  color: #01bcd2;
 }
 
 .checkIcon {
@@ -204,8 +209,7 @@ The gooy svg should be animated when shown in the verification, reward and mock 
 .securePill {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  margin-top: 28px;
+  gap: 12px;
   padding: 9px 20px;
   border-radius: 9999px;
   background: linear-gradient(
@@ -221,7 +225,7 @@ The gooy svg should be animated when shown in the verification, reward and mock 
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
   position: relative;
   overflow: hidden;
-  animation: fadeInUp 0.5s ease-out 0.5s both;
+  animation: fadeInUp 0.15s ease-out 0.15s both;
 }
 
 /* shimmer sweep */
@@ -244,7 +248,9 @@ The gooy svg should be animated when shown in the verification, reward and mock 
   height: 7px;
   border-radius: 50%;
   background: #4ade80;
-  box-shadow: 0 0 6px #4ade80, 0 0 12px rgba(74, 222, 128, 0.5);
+  box-shadow:
+    0 0 6px #4ade80,
+    0 0 12px rgba(74, 222, 128, 0.5);
   animation: dotPulse 2s infinite ease-in-out;
   flex-shrink: 0;
 }
@@ -265,18 +271,35 @@ The gooy svg should be animated when shown in the verification, reward and mock 
 }
 
 @keyframes dotPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.6; transform: scale(0.85); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.85);
+  }
 }
 
 @keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position:  200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ---------------- KEYFRAME ANIMATIONS ---------------- */
