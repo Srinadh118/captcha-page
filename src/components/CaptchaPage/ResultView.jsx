@@ -16,15 +16,6 @@ export default function ResultView({ success = true, onClaim, onNoThanks }) {
 
   return (
     <div className={styles.container}>
-      {/* Animated Gooey SVG Backdrop */}
-      <div className={styles.gooyWrapper}>
-        <img
-          src="/assets/gooy.svg"
-          alt="Gooey Background"
-          className={styles.gooySvg}
-        />
-      </div>
-
       {/* Title */}
       <h2
         className={`${styles.title} ${styles.revealTitle} ${

@@ -12,26 +12,6 @@
   animation: fadeIn 0.4s ease-out;
 }
 
-/* Animated Gooey SVG */
-.gooyWrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 440px;
-  height: 480px;
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.85;
-}
-
-.gooySvg {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  animation: gooyMorph 20s infinite alternate linear;
-}
-
 .gemIcon {
   width: 38px;
   height: 38px;
@@ -294,15 +274,6 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes gooyMorph {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(90deg);
   }
 }
 

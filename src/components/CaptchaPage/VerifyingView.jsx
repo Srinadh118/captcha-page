@@ -40,15 +40,6 @@ export default function VerifyingView({ onComplete }) {
 
   return (
     <div className={styles.container}>
-      {/* Animated Gooey SVG Background */}
-      <div className={styles.gooyWrapper}>
-        <img
-          src="/assets/gooy.svg"
-          alt="Gooey Aura"
-          className={styles.gooySvg}
-        />
-      </div>
-
       {/* Purple Gem */}
       <img
         src="/assets/gem-purple.webp"
