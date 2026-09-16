@@ -570,3 +570,18 @@ Requirements 3 & 4:
     background-position: -200% 0;
   }
 }
+
+@media (max-width: 410px) {
+  .container {
+    padding: 10px 10px 20px;
+  }
+  .captchaCard {
+    width: 86vw;
+    height: 220px;
+  }
+
+  .captchaText {
+    font-size: 35px;
+    letter-spacing: 4px;
+  }
+}

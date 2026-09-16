@@ -375,3 +375,30 @@
     height: 100px;
   }
 }
+
+@media (max-width: 425px) {
+  .securityBadges {
+    gap: 5px;
+  }
+
+  .badge {
+    gap: 3px;
+    padding: 3px 8px;
+  }
+
+  .badgeIcon {
+    font-size: 12px;
+  }
+
+  .checkIcon {
+    font-size: 13px;
+  }
+
+  .badgeLabel {
+    font-size: 10px;
+  }
+
+  .securePillText {
+    font-size: 10px;
+  }
+}

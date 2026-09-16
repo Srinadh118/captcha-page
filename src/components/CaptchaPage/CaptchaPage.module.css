@@ -98,3 +98,15 @@ The text has a linear gradient as well, from 0% #050207 top-right to 100% #26133
     font-size: clamp(150px, 24vw, 200px);
   }
 }
+
+@media (max-width: 425px) {
+  .contentContainer {
+    padding: 10px 10px 20px;
+  }
+
+  .captchaWatermark {
+    left: -3%;
+    top: 100%;
+    font-size: clamp(150px, 24vw, 200px);
+  }
+}

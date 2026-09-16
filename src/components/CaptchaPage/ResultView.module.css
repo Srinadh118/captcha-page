@@ -364,3 +364,9 @@
     width: 100%;
   }
 }
+
+@media (max-width: 425px) {
+  .securePillText {
+    font-size: 10px;
+  }
+}
