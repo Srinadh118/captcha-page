@@ -369,4 +369,12 @@
   .securePillText {
     font-size: 10px;
   }
+  .container {
+    padding: 36px 16px;
+  }
+}
+@media (max-width: 370px) {
+  .container {
+    padding: 28px 16px;
+  }
 }
