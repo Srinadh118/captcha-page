@@ -11,34 +11,23 @@
   z-index: 10;
   font-family: "Poppins", sans-serif;
   animation: fadeIn 0.4s ease-out;
-  border-radius: 24px;
-  overflow: hidden;
 
-  /* Real Glass Optical Base */
+  /* Subtle Glassmorphism */
   background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.07) 0%,
-    rgba(255, 255, 255, 0.02) 35%,
-    rgba(16, 8, 28, 0.35) 70%,
-    rgba(10, 4, 18, 0.55) 100%
+    145deg,
+    rgba(255, 255, 255, 0.023) 0%,
+    rgba(20, 10, 35, 0.407) 35%,
+    rgba(10, 4, 18, 0.511) 100%
   );
-
-  /* Optical Refraction & Clarity */
-  backdrop-filter: blur(14px) saturate(150%) brightness(1.05);
-  -webkit-backdrop-filter: blur(14px) saturate(150%) brightness(1.05);
-
-  /* Directional Glass Bevel (Catches light from top-left, fades to dark refraction on bottom-right) */
-  border: 1px solid rgba(144, 93, 180, 0.08);
-  border-top-color: rgba(134, 88, 164, 0.3);
-  border-left-color: rgba(161, 101, 187, 0.18);
-  border-right-color: rgba(149, 92, 173, 0.16);
-  border-bottom-color: rgba(142, 103, 170, 0.1);
-
-  /* Specular Highlight, Prism Depth & Ambient Caustics */
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  border: 1px solid rgba(169, 85, 247, 0.144);
+  border-radius: 24px;
   box-shadow:
-    0 24px 50px -10px rgba(0, 0, 0, 0.65),
-    0 10px 20px -5px rgba(0, 0, 0, 0.35),
-    0 0 40px -5px rgba(121, 40, 202, 0.12);
+    0 24px 48px -12px rgba(0, 0, 0, 0.593),
+    0 0 35px -5px rgba(121, 40, 202, 0.07),
+    inset 0 1px 1px rgba(255, 255, 255, 0.078),
+    inset 0 0 24px rgba(168, 85, 247, 0.05);
 }
 
 /* Diagonal Surface Glare / Specular Sheen (polished glass reflection) */
