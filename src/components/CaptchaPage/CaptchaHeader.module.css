@@ -44,7 +44,7 @@
 .rightControls {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .soundBtn {
@@ -126,5 +126,98 @@
   .gemIcon {
     width: 18px;
     height: 18px;
+  }
+}
+
+@media (max-width: 420px) {
+  .header {
+    padding: 12px 14px;
+  }
+  .rightControls {
+    gap: 10px;
+  }
+  .brandName {
+    font-size: 20px;
+  }
+  .brandSubtitle {
+    font-size: 9px;
+    letter-spacing: 1.6px;
+  }
+  .soundBtn {
+    width: 34px;
+    height: 34px;
+  }
+  .gemBadge {
+    padding: 5px 12px 5px 9px;
+    gap: 8px;
+  }
+  .gemValue {
+    font-size: 13.5px;
+  }
+  .gemIcon {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+@media (max-width: 370px) {
+  .header {
+    padding: 10px 12px;
+  }
+  .rightControls {
+    gap: 8px;
+  }
+  .brandName {
+    font-size: 18px;
+  }
+  .brandSubtitle {
+    font-size: 8.5px;
+    letter-spacing: 1.3px;
+  }
+  .soundBtn {
+    width: 32px;
+    height: 32px;
+  }
+  .gemBadge {
+    padding: 4px 10px 4px 8px;
+    gap: 6px;
+  }
+  .gemIcon {
+    width: 15px;
+    height: 15px;
+  }
+  .gemValue {
+    font-size: 12.5px;
+  }
+}
+
+@media (max-width: 320px) {
+  .header {
+    padding: 8px 8px;
+  }
+  .rightControls {
+    gap: 6px;
+  }
+  .brandName {
+    font-size: 16px;
+  }
+  .brandSubtitle {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  .soundBtn {
+    width: 28px;
+    height: 28px;
+  }
+  .gemBadge {
+    padding: 3px 8px 3px 6px;
+    gap: 5px;
+  }
+  .gemIcon {
+    width: 14px;
+    height: 14px;
+  }
+  .gemValue {
+    font-size: 11.5px;
   }
 }

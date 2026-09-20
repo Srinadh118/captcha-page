@@ -47,6 +47,16 @@ The text has a linear gradient as well, from 0% #050207 top-right to 100% #26133
   user-select: none;
   pointer-events: none;
   z-index: 2;
+  animation: watermarkBreath 10s infinite ease-in-out;
+}
+
+@keyframes watermarkBreath {
+  0%, 100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 /* Ambient glow spot */
@@ -65,6 +75,115 @@ The text has a linear gradient as well, from 0% #050207 top-right to 100% #26133
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 2;
+}
+
+/* Interactive Cursor-tracking Ambient Glow */
+.cursorGlow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(168, 85, 247, 0.12) 0%,
+    rgba(126, 34, 206, 0.05) 45%,
+    rgba(7, 4, 12, 0) 70%
+  );
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  will-change: transform;
+}
+
+/* Drifting Cyber Dust Atmosphere */
+.particleField {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: #c084fc;
+  box-shadow: 0 0 6px rgba(192, 132, 252, 0.8);
+  opacity: 0;
+}
+
+.p1 {
+  width: 3px;
+  height: 3px;
+  top: 25%;
+  left: 18%;
+  animation: floatDust 7s infinite ease-in-out;
+}
+
+.p2 {
+  width: 2px;
+  height: 2px;
+  top: 65%;
+  left: 22%;
+  animation: floatDust 9s infinite ease-in-out 1.5s;
+}
+
+.p3 {
+  width: 4px;
+  height: 4px;
+  top: 30%;
+  left: 78%;
+  background: #facc15;
+  box-shadow: 0 0 8px rgba(250, 204, 21, 0.7);
+  animation: floatDust 8s infinite ease-in-out 3s;
+}
+
+.p4 {
+  width: 2px;
+  height: 2px;
+  top: 75%;
+  left: 72%;
+  animation: floatDust 10s infinite ease-in-out 0.8s;
+}
+
+.p5 {
+  width: 3px;
+  height: 3px;
+  top: 15%;
+  left: 55%;
+  animation: floatDust 6.5s infinite ease-in-out 2.2s;
+}
+
+.p6 {
+  width: 2px;
+  height: 2px;
+  top: 85%;
+  left: 45%;
+  animation: floatDust 8.5s infinite ease-in-out 4s;
+}
+
+@keyframes floatDust {
+  0% {
+    transform: translate(0, 0) scale(0.6);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(24px, -30px) scale(1.1);
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(45px, -60px) scale(0.6);
+    opacity: 0;
+  }
 }
 
 .contentContainer {

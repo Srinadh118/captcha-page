@@ -9,7 +9,7 @@ import {
   generateCaptchaChallenge,
   PRESET_CHALLENGES,
 } from "./utils/captchaGenerator";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function CaptchaPage({
   initialGems = 125.5,
@@ -22,6 +22,36 @@ export default function CaptchaPage({
   const [challenge, setChallenge] = useState(PRESET_CHALLENGES[0]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isSuccess, setIsSuccess] = useState(true);
+  const cursorGlowRef = useRef(null);
+
+  // Dynamic ambient spotlight tracking cursor across page smoothly
+  useEffect(() => {
+    let rafId;
+    const handleMouseMove = (e) => {
+      if (!cursorGlowRef.current) return;
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        if (cursorGlowRef.current) {
+          cursorGlowRef.current.style.transform = `translate3d(${e.clientX - 250}px, ${e.clientY - 250}px, 0)`;
+          cursorGlowRef.current.style.opacity = "1";
+        }
+      });
+    };
+
+    const handleMouseLeave = () => {
+      if (cursorGlowRef.current) {
+        cursorGlowRef.current.style.opacity = "0";
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", handleMouseLeave);
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
 
   // Refresh current challenge
   const handleRefreshChallenge = () => {
@@ -97,6 +127,19 @@ export default function CaptchaPage({
       </div>
 
       <div className={styles.ambientGlow} />
+
+      {/* Interactive Cursor-tracking Ambient Glow */}
+      <div ref={cursorGlowRef} className={styles.cursorGlow} aria-hidden="true" />
+
+      {/* Drifting Cyber Dust Atmosphere */}
+      <div className={styles.particleField} aria-hidden="true">
+        <span className={`${styles.particle} ${styles.p1}`} />
+        <span className={`${styles.particle} ${styles.p2}`} />
+        <span className={`${styles.particle} ${styles.p3}`} />
+        <span className={`${styles.particle} ${styles.p4}`} />
+        <span className={`${styles.particle} ${styles.p5}`} />
+        <span className={`${styles.particle} ${styles.p6}`} />
+      </div>
 
       {/* Header with VELoop REWARDS brand and live Gem counter */}
       <CaptchaHeader gems={gems} />
