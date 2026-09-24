@@ -52,6 +52,20 @@ A modular, cyber-gamified **CAPTCHA Verification Page** built for the **VELoop R
 - **Strict CSS Modules**:
   - 100% scoped `.module.css` implementation across all components.
 
+## 📖 Comprehensive Documentation
+
+Exhaustive, modular documentation is available in the [`/docs/`](./docs/README.md) directory:
+
+- 📑 [**Documentation Hub**](./docs/README.md): Central index and quick navigation.
+- 🏗️ [**Architecture & State Machine**](./docs/architecture.md): Finite State Machine, lifecycle flow, and data flow.
+- 🧩 [**Component Specifications**](./docs/components.md): Deep-dive into each component, props, and states.
+- 🎲 [**Challenge & Distractor Algorithms**](./docs/algorithms.md): Algorithmic generation, confusion matrices, and scrambler.
+- 🎧 [**Web Audio API Engine**](./docs/audio-engine.md): Zero-asset sound synthesis and waveform catalog.
+- 🎨 [**Cyberpunk Design System**](./docs/design-system.md): Tokens, typography, 3D tilt physics, and responsive layouts.
+- 📦 [**Embedding & Integration Guide**](./docs/integration.md): TypeScript types, usage examples, and embedding steps.
+- 📋 [**Acceptance Criteria Audit**](./docs/acceptance-criteria.md): 32-point specification compliance matrix.
+- 🛠️ [**Developer & Operations Guide**](./docs/development.md): Setup, scripts, deployment, and troubleshooting.
+
 ---
 
 ## 📁 Project Structure
